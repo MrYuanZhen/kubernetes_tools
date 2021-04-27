@@ -47,7 +47,7 @@ func main() {
 
 	// get args
 	var rise = flag.String("rise", "30", "执行间隔时间")
-	var confdArg = flag.String("confd-arg", "-log-level=debug -onetime -backend env", "confd执行参数")
+	var confdArg = flag.String("confd-arg", "abc", "confd执行参数")
 	flag.Parse()
 
 	// read kubecfg
@@ -55,14 +55,11 @@ func main() {
 
 	// Time Ticker
 	t, _ := time.ParseDuration(*rise + "s")
+	fmt.Println("当前刷新间隔时间为：",t)
 	timeTicker := time.NewTicker(t)
 
 	i := 0
 	for {
-		// test
-		//if i > 5 {
-		//	break
-		//}
 
 		// get node ip
 		ipArr := getNodeIP(clientset)
@@ -81,7 +78,7 @@ func main() {
 		i++
 		<-timeTicker.C
 	}
-	// 清理计时器
+	// clear timeticker
 	timeTicker.Stop()
 
 }
