@@ -38,7 +38,7 @@ func kubeCfg() *kubernetes.Clientset {
 func main() {
 
 	// get args
-	var rise = flag.String("rise", "30", "执行间隔时间")
+	//var rise = flag.String("rise", "30", "执行间隔时间")
 	var confdArg = flag.String("confd-arg", "1", "confd执行参数")
 	flag.Parse()
 
@@ -46,8 +46,8 @@ func main() {
 	clientset := kubeCfg()
 
 	// Time Ticker
-	t, _ := time.ParseDuration(*rise + "s")
-	timeTicker := time.NewTicker(t)
+	//t, _ := time.ParseDuration(*rise + "s")
+	timeTicker := time.NewTicker(time.Second * 3)
 
 	i := 0
 	for {
