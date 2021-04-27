@@ -70,7 +70,7 @@ func main() {
 		fmt.Println(now, "当前controller节点IP地址为："+ipStr)
 
 		//set env
-		setEnv(ipStr)
+		//setEnv(ipStr)
 
 		// operate confd
 		operateConfd(ipStr, *confdArg)
