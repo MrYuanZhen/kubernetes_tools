@@ -47,7 +47,7 @@ func main() {
 
 	// get args
 	var rise = flag.String("rise", "30", "执行间隔时间")
-	var confdArg = flag.String("confd-arg", "1", "confd执行参数")
+	var confdArg = flag.String("confd-arg", "-log-level=debug -onetime -backend env", "confd执行参数")
 	flag.Parse()
 
 	// read kubecfg
@@ -70,7 +70,7 @@ func main() {
 
 		// log
 		now := time.Now()
-		fmt.Println(now, "当前controller节点IP地址为"+ipStr)
+		fmt.Println(now, "当前controller节点IP地址为："+ipStr)
 
 		//set env
 		setEnv(ipStr)
