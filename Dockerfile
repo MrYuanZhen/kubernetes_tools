@@ -13,7 +13,7 @@ ADD https://github.com/kelseyhightower/confd/releases/download/v${CONFD_VERSION}
 # Get kubectl
 RUN apk add --no-cache curl
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl && mv ./kubectl /usr/local/bin/kubectl && chmod +x /usr/local/bin/kubectl
-RUN mkdir ~/.kube
+RUN mkdir /etc/kube
 
 COPY confd/ /etc/confd/
 COPY endpoint.sh /endpoint.sh
