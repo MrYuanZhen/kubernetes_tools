@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"os/exec"
 )
@@ -21,6 +22,11 @@ func operateConfd(ipStr string, confdArg string) {
 
 	// run confd process
 	cmd := exec.Command("ENDPOINTS="+ipStr, "confd", confdArg)
+	out, err := cmd.CombinedOutput()
+	if err != nil {
+		log.Fatalf("cmd.Run() failed with %s\n", err)
+	}
+	fmt.Printf("combined out:\n%s\n", string(out))
 
 	fmt.Println("执行更新confd命令：", cmd)
 
