@@ -10,7 +10,7 @@ import (
 
 func getNodeIP(clientset *kubernetes.Clientset) []string {
 
-	nodes, err := clientset.CoreV1().Nodes().List(context.TODO(), metav1.ListOptions{})
+	nodes, err := clientset.CoreV1().Nodes().List(context.TODO(), metav1.ListOptions{LabelSelector:"node-role.kubernetes.io/controlplane=true"})
 	if err != nil {
 		panic(err)
 	}
