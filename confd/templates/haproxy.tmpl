@@ -52,5 +52,6 @@ listen api-server
     option httpchk GET /healthz HTTP/1.0
     http-check expect string ok
     {{ $servers := split (getenv "ENDPOINTS") "," }}{{range $servers}}
+    # check：启用健康检测，inter：健康检测间隔，rise：检测服务可用的连续次数，fall：检测服务不可用的连续次数
     server {{.}} {{.}}:6443 check inter 2000 rise 2 fall 2 check-ssl ca-file /etc/kubernetes/ssl/kube-ca.pem crt /home/ssl-crt.pem
     {{end}}
