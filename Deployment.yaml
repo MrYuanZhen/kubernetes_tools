@@ -55,20 +55,25 @@ spec:
         app.kubernetes.io/name: refresh-apiendpoint
     spec:
       containers:
-        - image: devopszhen/kubernetestools:release-master
-          imagePullPolicy: Always
-          name: refresh-apiendpoint
-          resources: {}
-          securityContext:
-            allowPrivilegeEscalation: false
-            capabilities: {}
-            privileged: false
-            readOnlyRootFilesystem: false
-            runAsNonRoot: false
-          stdin: true
-          terminationMessagePath: /dev/termination-log
-          terminationMessagePolicy: File
-          tty: true
+      - env:
+        - name: CONFDAGE
+          value: -log-level=debug -onetime -backend env
+        - name: RISETIME
+          value: "60"
+        image: devopszhen/kubernetestools:release-master
+        imagePullPolicy: Always
+        name: refresh-apiendpoint
+        resources: {}
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities: {}
+          privileged: false
+          readOnlyRootFilesystem: false
+          runAsNonRoot: false
+        stdin: true
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        tty: true
       serviceAccountName: refresh-apiendpoint-sa
       dnsPolicy: ClusterFirst
       restartPolicy: Always
