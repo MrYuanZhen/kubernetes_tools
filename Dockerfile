@@ -23,6 +23,6 @@ COPY endpoint.sh /endpoint.sh
 COPY --from=0 /clusterGetnodeip/clusterGetnodeip /usr/bin/clusterGetnodeip
 
 #RUN chmod +x /usr/bin/confd /endpoint.sh /usr/bin/clusterGetnodeip
-RUN chomos +X /usr/bin/clusterGetnodeip
+RUN chomod +X /usr/bin/clusterGetnodeip
 
 CMD /endpoint.sh
