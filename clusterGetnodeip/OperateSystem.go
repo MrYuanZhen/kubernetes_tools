@@ -26,6 +26,7 @@ func operateConfd(ipStr string, confdArg string) {
 	//out, err := cmd.CombinedOutput()
 	if err != nil {
 		fmt.Printf("Failed to execute command: %s", cmd)
+		panic(err.Error())
 	}
 	fmt.Println(string(out))
 
