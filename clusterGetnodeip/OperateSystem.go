@@ -20,7 +20,7 @@ func operateConfd(ipStr string, confdArg string) {
 	fmt.Println("当前准备执行更新的master节点IP为：",MASTERIPS)
 
 	// run confd process
-	cmd := exec.Command("$ENDPOINTS","confd", confdArg)
+	cmd := exec.Command("ENDPOINTS=$ENDPOINTS","confd", confdArg)
 
 	fmt.Println("执行更新confd命令：",cmd)
 
