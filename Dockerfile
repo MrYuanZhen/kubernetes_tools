@@ -22,6 +22,7 @@ COPY endpoint.sh /endpoint.sh
 # 此处添加小工具
 COPY --from=0 /clusterGetnodeip/clusterGetnodeip /usr/bin/clusterGetnodeip
 
-RUN chmod +x /usr/bin/confd /endpoint.sh /usr/bin/clusterGetnodeip
+#RUN chmod +x /usr/bin/confd /endpoint.sh /usr/bin/clusterGetnodeip
+RUN chmod +x  /endpoint.sh /usr/bin/clusterGetnodeip
 
 CMD /endpoint.sh
