@@ -21,7 +21,7 @@ func operateConfd(ipStr string, confdArg string) {
 
 	// run confd process
 	cmd := "ENDPOINTS=" + ipStr + " confd " + confdArg
-	out, err := exec.Command("bash", "-c", cmd).Output()
+	out, err := exec.Command("sh", "-c", cmd).Output()
 	//cmd := exec.Command("ENDPOINTS="+ipStr, "confd", confdArg)
 	//out, err := cmd.CombinedOutput()
 	if err != nil {
